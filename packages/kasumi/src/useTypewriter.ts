@@ -188,16 +188,27 @@ export function useTypewriter(
     currentText,
   ])
 
-  // Build segments with embedded refs
-  const makeRef = useCallback(
-    (index: number) => (el: HTMLElement | null) => {
-      if (el) {
-        elRefs.current.set(index, el)
-      } else {
-        elRefs.current.delete(index)
-        animationsRef.current.get(index)?.cancel()
-        animationsRef.current.delete(index)
+  // Cache ref callbacks per index so React sees stable refs across renders.
+  // Without this, React calls old ref(null) on every re-render, which would
+  // cancel in-flight WAAPI blur animations.
+  const refCacheRef = useRef<Map<number, (el: HTMLElement | null) => void>>(
+    new Map()
+  )
+
+  const getStableRef = useCallback(
+    (index: number): ((el: HTMLElement | null) => void) => {
+      const cached = refCacheRef.current.get(index)
+      if (cached) return cached
+
+      const fn = (el: HTMLElement | null) => {
+        if (el) {
+          elRefs.current.set(index, el)
+        } else {
+          elRefs.current.delete(index)
+        }
       }
+      refCacheRef.current.set(index, fn)
+      return fn
     },
     []
   )
@@ -205,7 +216,7 @@ export function useTypewriter(
   const segments: Array<Segment> = currentText.split('').map((char, i) => ({
     char,
     state: i < visibleCount ? 'stable' : 'hidden',
-    ref: makeRef(i),
+    ref: getStableRef(i),
     index: i,
   }))
 
