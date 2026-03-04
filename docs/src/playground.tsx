@@ -17,6 +17,12 @@ const COLLAPSE_TRANSITION = {
   ease: [0.25, 0.46, 0.45, 0.94] as const,
 }
 
+const INPUT_TRANSITION = {
+  duration: 0.4,
+  ease: [0.16, 1, 0.3, 1] as const,
+  filter: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
+}
+
 function AnimatedSection({
   isVisible,
   children,
@@ -241,10 +247,25 @@ export function Playground() {
               {texts.slice(1).map((t, i) => (
                 <motion.div
                   key={i + 1}
-                  initial={{ height: 0, opacity: 0, filter: 'blur(8px)' }}
-                  animate={{ height: 'auto', opacity: 1, filter: 'blur(0px)' }}
-                  exit={{ height: 0, opacity: 0, filter: 'blur(8px)' }}
-                  transition={COLLAPSE_TRANSITION}
+                  initial={{
+                    height: 0,
+                    marginTop: -8,
+                    opacity: 0,
+                    filter: 'blur(8px)',
+                  }}
+                  animate={{
+                    height: 'auto',
+                    marginTop: 0,
+                    opacity: 1,
+                    filter: 'blur(0px)',
+                  }}
+                  exit={{
+                    height: 0,
+                    marginTop: -8,
+                    opacity: 0,
+                    filter: 'blur(8px)',
+                  }}
+                  transition={INPUT_TRANSITION}
                   style={{ overflow: 'hidden' }}
                 >
                   <div className="flex gap-2">
@@ -277,9 +298,9 @@ export function Playground() {
           <AnimatePresence initial={false}>
             {isLoopEnabled && (
               <motion.button
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
+                initial={{ height: 0, marginTop: -8, opacity: 0 }}
+                animate={{ height: 'auto', marginTop: 0, opacity: 1 }}
+                exit={{ height: 0, marginTop: -8, opacity: 0 }}
                 transition={COLLAPSE_TRANSITION}
                 onClick={() => setTexts([...texts, ''])}
                 className="self-start text-sm text-warm-brown hover:text-warm-black transition-colors cursor-pointer mt-1"
