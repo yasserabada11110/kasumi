@@ -15,9 +15,8 @@ npm install @tigerabrodioss/kasumi
 ## Quick start
 
 ```tsx
-import { Typewriter } from "@tigerabrodioss/kasumi"
-
-<Typewriter text="What emails can I help you" />
+import { Typewriter } from '@tigerabrodioss/kasumi'
+;<Typewriter text="What emails can I help you" />
 ```
 
 That is all you need. It types, it blurs, it decelerates at the end.
@@ -27,10 +26,7 @@ That is all you need. It types, it blurs, it decelerates at the end.
 ## Loop through multiple strings
 
 ```tsx
-<Typewriter
-  text={["Design faster.", "Ship sooner.", "Sleep better."]}
-  loop
-/>
+<Typewriter text={['Design faster.', 'Ship sooner.', 'Sleep better.']} loop />
 ```
 
 ---
@@ -40,10 +36,10 @@ That is all you need. It types, it blurs, it decelerates at the end.
 When you need custom markup. Two lines on mobile, one on desktop. An animation fading in at the end. Anything the component cannot express.
 
 ```tsx
-import { useTypewriter } from "@tigerabrodioss/kasumi"
+import { useTypewriter } from '@tigerabrodioss/kasumi'
 
 const { segments, isDone, isTyping } = useTypewriter({
-  text: "What emails can I help you",
+  text: 'What emails can I help you',
 })
 
 return (
@@ -68,7 +64,7 @@ Each segment has this shape.
 ```ts
 type Segment = {
   char: string
-  state: "stable" | "blurring" | "hidden"
+  state: 'stable' | 'blurring' | 'hidden'
   ref: (el: HTMLElement | null) => void
   index: number
 }
@@ -96,7 +92,7 @@ Or bring your own curve. The function receives `progress` (0 to 1) and returns t
   feel={{
     curve: ({ progress, index, total }) => {
       return 80 - progress * 60
-    }
+    },
   }}
 />
 ```
@@ -109,10 +105,10 @@ Or bring your own curve. The function receives `progress` (0 to 1) and returns t
 <Typewriter
   text="Hello"
   blur={{
-    trailLength: 4,    // how many chars blur in at once. default 4
-    duration: 300,     // ms per char animation. default 300
-    amount: 8,         // blur intensity in px. default 8
-    easing: "ease-out" // css easing string. default "ease-out"
+    trailLength: 4, // how many chars blur in at once. default 4
+    duration: 300, // ms per char animation. default 300
+    amount: 8, // blur intensity in px. default 8
+    easing: 'ease-out', // css easing string. default "ease-out"
   }}
 />
 ```
@@ -141,8 +137,8 @@ Default is `span`.
 ```tsx
 <Typewriter
   text="Hello"
-  initialDelay={100}   // ms before typing starts. default 0
-  pauseAfter={1200}    // ms to wait at end before deleting. loop only. default 1200
+  initialDelay={100} // ms before typing starts. default 0
+  pauseAfter={1200} // ms to wait at end before deleting. loop only. default 1200
 />
 ```
 
@@ -156,7 +152,7 @@ Default is `span`.
   onStart={() => {}}
   onDone={() => {}}
   onCharTyped={({ char, index }) => {}}
-  onDelete={({ char, index }) => {}}   // loop only
+  onDelete={({ char, index }) => {}} // loop only
 />
 ```
 
@@ -165,44 +161,37 @@ Default is `span`.
 ## useTypewriter full reference
 
 ```ts
-const {
-  segments,
-  isDone,
-  isTyping,
-  isDeleting,
-  restart,
-  pause,
-  resume,
-} = useTypewriter({
-  text: "Hello",                        // string or string[]
-  feel: "cinematic",                    // preset or { curve: fn }
-  blur: {
-    trailLength: 4,
-    duration: 300,
-    amount: 8,
-    easing: "ease-out",
-  },
-  loop: false,
-  initialDelay: 0,
-  pauseAfter: 1200,
-  onStart: () => {},
-  onDone: () => {},
-  onCharTyped: ({ char, index }) => {},
-  onDelete: ({ char, index }) => {},
-})
+const { segments, isDone, isTyping, isDeleting, restart, pause, resume } =
+  useTypewriter({
+    text: 'Hello', // string or string[]
+    feel: 'cinematic', // preset or { curve: fn }
+    blur: {
+      trailLength: 4,
+      duration: 300,
+      amount: 8,
+      easing: 'ease-out',
+    },
+    loop: false,
+    initialDelay: 0,
+    pauseAfter: 1200,
+    onStart: () => {},
+    onDone: () => {},
+    onCharTyped: ({ char, index }) => {},
+    onDelete: ({ char, index }) => {},
+  })
 ```
 
 ### Result
 
-| Field | Type | Description |
-|---|---|---|
-| `segments` | `Segment[]` | Current characters with their state and blur ref |
-| `isDone` | `boolean` | True when all characters are typed and animation is complete |
-| `isTyping` | `boolean` | True while characters are actively being typed |
-| `isDeleting` | `boolean` | True while characters are being deleted (loop mode) |
-| `restart` | `() => void` | Reset and replay the animation from the beginning |
-| `pause` | `() => void` | Pause mid-animation |
-| `resume` | `() => void` | Resume from where it paused |
+| Field        | Type         | Description                                                  |
+| ------------ | ------------ | ------------------------------------------------------------ |
+| `segments`   | `Segment[]`  | Current characters with their state and blur ref             |
+| `isDone`     | `boolean`    | True when all characters are typed and animation is complete |
+| `isTyping`   | `boolean`    | True while characters are actively being typed               |
+| `isDeleting` | `boolean`    | True while characters are being deleted (loop mode)          |
+| `restart`    | `() => void` | Reset and replay the animation from the beginning            |
+| `pause`      | `() => void` | Pause mid-animation                                          |
+| `resume`     | `() => void` | Resume from where it paused                                  |
 
 ---
 
@@ -211,7 +200,7 @@ const {
 ```ts
 type Segment = {
   char: string
-  state: "stable" | "blurring" | "hidden"
+  state: 'stable' | 'blurring' | 'hidden'
   ref: (el: HTMLElement | null) => void
   index: number
 }
@@ -229,11 +218,7 @@ type FeelCurve = (params: {
   total: number
 }) => number
 
-type FeelConfig =
-  | "cinematic"
-  | "snappy"
-  | "playful"
-  | { curve: FeelCurve }
+type FeelConfig = 'cinematic' | 'snappy' | 'playful' | { curve: FeelCurve }
 
 type UseTypewriterOptions = {
   text: string | string[]
