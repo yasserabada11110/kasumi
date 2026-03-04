@@ -8,7 +8,7 @@ export type ResolvedFeel = {
 const EASE_OUT_AT = 0.75
 
 const PRESETS: Record<string, ResolvedFeel> = {
-  // Accelerates then decelerates — matches Brew hero pacing
+  // Accelerates then decelerates
   cinematic: {
     baseDelay: 34,
     curve: ({ progress }) => {
